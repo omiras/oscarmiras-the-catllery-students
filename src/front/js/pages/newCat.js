@@ -40,7 +40,7 @@ export const NewCat = () => {
       setImageUrl("");
     } else {
       setAlertVariant("danger");
-      setAlertMessage(data.error || "Error al añadir el gato");
+      setAlertMessage(data.error || "Error al añadir el gato. Mira la consola o en el terminal del servidor de Python");
     }
   };
 
@@ -50,11 +50,8 @@ export const NewCat = () => {
         <h2 className="text-center mt-4 mb-5">Añadir nuevo Gato</h2>
       </div>
       {alertMessage && (
-        <div className={`alert ${alertVariant} ${alertMessage ? '' : 'd-none'}`} role="alert">
+        <div className={`alert alert-${alertVariant}`} role="alert">
           {alertMessage}
-          <button type="button" className="close" onClick={() => setAlertMessage('')} aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
         </div>
       )}
       <form onSubmit={handleSubmit}>

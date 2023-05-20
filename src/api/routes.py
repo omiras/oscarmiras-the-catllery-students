@@ -7,7 +7,6 @@ from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
-from flask_jwt_extended import JWTManager
 
 
 api = Blueprint('api', __name__)
@@ -56,11 +55,12 @@ def login():
 
 @api.route("/cat", methods=["POST"])
 @jwt_required()
-def protected():
+def post_cat():
     current_user = get_jwt_identity()
 
     # Obtén los datos del gato del cuerpo de la solicitud
     data = request.json
+    print(data)
     name = data.get("name")
     image_url = data.get("imageUrl")
 
@@ -69,7 +69,7 @@ def protected():
         return jsonify({"error": "Nombre e imagen del gato son obligatorios"}), 400
 
     # Crea un nuevo objeto Cat relacionado con el usuario actual
-    cat = Cat(name=name, image_url=image_url, user_id=current_user)
+    cat = Cat(name=name, image_url=image_url, user_id=current_user['id'])
 
     # Guarda el nuevo gato en la base de datos
     db.session.add(cat)
