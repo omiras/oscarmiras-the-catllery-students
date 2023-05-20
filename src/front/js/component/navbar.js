@@ -57,7 +57,7 @@ export const Navbar = () => {
 					)}
 					{tokenExists && (
 						<>
-							<Link to="/list-cats">
+							<Link to="/my-cats">
 								<button className="btn btn-primary">Mis Gatos</button>
 							</Link>
 							<Link to="/new-cat">

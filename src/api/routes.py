@@ -86,3 +86,28 @@ def handle_hello():
     }
 
     return jsonify(response_body), 200
+
+
+@api.route("/cats", methods=["GET"])
+@jwt_required()
+def get_user_cats():
+
+    # Obtengo el usuario al que pertenece el token JWT
+    current_user = get_jwt_identity()
+
+    # Busca todos los gatos asociados al usuario actual
+    cats = Cat.query.filter_by(user_id=current_user['id']).all()
+
+    # Crea una lista para almacenar los datos de los gatos
+    cats_data = []
+
+    # Recorre los gatos y agrega sus datos a la lista
+    for cat in cats:
+        cat_data = {
+            "id": cat.id,
+            "name": cat.name,
+            "image_url": cat.image_url
+        }
+        cats_data.append(cat_data)
+
+    return jsonify(cats_data), 200
