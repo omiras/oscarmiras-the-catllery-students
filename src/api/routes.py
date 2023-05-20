@@ -8,6 +8,18 @@ from api.utils import generate_sitemap, APIException
 api = Blueprint('api', __name__)
 
 
+@api.route("/signup", methods=["POST"])
+def sign_up():
+   email = request.json.get("email")
+   password = request.json.get("password")
+       
+   user = User(email = email, password = password)
+
+   db.session.add(user)
+   db.session.commit()
+       
+   return jsonify({"msg": "User created"}), 200
+
 @api.route('/hello', methods=['POST', 'GET'])
 def handle_hello():
 
