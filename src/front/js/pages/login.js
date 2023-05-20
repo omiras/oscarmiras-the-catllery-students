@@ -31,9 +31,13 @@ export const Login = () => {
                 setLoginSuccess(true);
                 setLoginError(false);
                 const data = await response.json();
-                const token = data.token; // asumiendo que el token se devuelve como propiedad "token" en la respuesta JSON
+                const token = data.token;
+                const email = data.email;
 
                 localStorage.setItem("miTokenJWT", token);
+                localStorage.setItem("loggedUserEmail", email);
+
+                setLoginSuccess(true);
 
                 setEmail('');
                 setPassword('');
@@ -61,7 +65,7 @@ export const Login = () => {
 
             {loginError && (
                 <div className="alert alert-danger" role="alert">
-                    Login incorrecto
+                    Problemas con el login. Credenciales incorrectas? Mira la consola del navegador Web y el terminal de Python
                 </div>
             )}
 
