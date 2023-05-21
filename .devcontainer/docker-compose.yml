@@ -2,6 +2,8 @@ version: '3.8'
 
 services:
   app:
+    environment:
+      FLASK_ALLOW_CORS: 1  # Movido aquí
     build:
       context: ..
       dockerfile: .devcontainer/Dockerfile

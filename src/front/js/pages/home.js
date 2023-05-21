@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import catImageUrl from "../../img/cat-gallery.jpg";
+import catImageUrl from "../../img/cat-gallery.png";
 import "../../styles/home.css";
 
 export const Home = () => {
