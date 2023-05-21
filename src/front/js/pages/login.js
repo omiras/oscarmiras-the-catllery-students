@@ -17,7 +17,7 @@ export const Login = () => {
 
         try {
             // Ejercicio 3: En este fetch hay DOS errores que impiden enviar correctamente el usuario y la contraseña al servidor Flask. 
-            // Además, falta enviar el usuario y la contraseña en el cuerpo de la petición POST
+            // Además, falta enviar el email y la contraseña en el cuerpo de la petición POST
 
             console.log("email a enviar: ", email)
             console.log("password a enviar: ", password)
