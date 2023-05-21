@@ -20,13 +20,12 @@ export const NewCat = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-
+    // Ejercicio 4
 
     const response = await fetch(process.env.BACKEND_URL + "/api/cat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({ name, imageUrl }),
     });

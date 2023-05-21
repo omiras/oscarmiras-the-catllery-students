@@ -16,15 +16,18 @@ export const Login = () => {
         e.preventDefault();
 
         try {
-            // Ejercicio 3: En este fetch hay dos errores que impiden enviar correctamente el usuario y la contraseña al servidor Flask. 
-            // Solamente hay que modificar dos líneas para resolverlo
+            // Ejercicio 3: En este fetch hay DOS errores que impiden enviar correctamente el usuario y la contraseña al servidor Flask. 
+            // Además, falta enviar el usuario y la contraseña en el cuerpo de la petición POST
 
-            const response = await fetch(process.env.BACKEND_URL + "/api/login", {
-                method: "POST",
+            console.log("email a enviar: ", email)
+            console.log("password a enviar: ", password)
+
+
+            const response = await fetch(process.env.BACKEND_URL + "/login", {
+                method: "GET",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ email, password }),
             });
 
             if (response.ok) {
